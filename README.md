@@ -30,5 +30,5 @@ An online food ordering system that allows customers to scan a QR code, view the
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/nnt-qr-food-ordering.git
+git clone https://github.com/LeoCranberrySauce/NNT.git
 cd nnt-qr-food-ordering
