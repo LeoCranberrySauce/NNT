@@ -1,0 +1,125 @@
+.footer {
+  background-color: #f6e6ff;
+  padding: 50px 0 20px;
+  color: #240112;
+  margin-top: 60px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-logo {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.about p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: translateY(-3px);
+}
+
+.footer-section h3 {
+  color: #a10051;
+  margin-bottom: 20px;
+  font-size: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #a10051;
+}
+
+.links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.links li {
+  margin-bottom: 12px;
+}
+
+.links a {
+  color: #240112;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: #a10051;
+  padding-left: 5px;
+}
+
+.contact p {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-downloads {
+  margin-top: 20px;
+}
+
+.app-downloads h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.store-links {
+  display: flex;
+  gap: 10px;
+}
+
+.store-links img {
+  height: 35px;
+  width: auto;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 30px;
+  border-top: 1px solid #dbc4e9;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-section {
+    margin-bottom: 30px;
+  }
+}
