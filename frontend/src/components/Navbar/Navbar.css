@@ -1,0 +1,71 @@
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.navbar {
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid rgb(36, 1, 18);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar-right img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    color: rgb(161, 0, 81);
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: 60px;
+}
+
+.navbar-search-icon {
+    position: relative;
+}
+
+.navbar-search-icon .dot {
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: rgb(161, 0, 81);
+    border-radius: 5px;
+    top: -8px;
+    right: -8px;
+}
+
+.navbar li {
+    cursor: pointer;
+}
+
+.navbar button {
+    background: transparent;
+    font-size: 18px;
+    color: gray;
+    border: 1px solid rgb(36, 1, 18);
+    padding: 10px 30px;
+    border-radius: 45px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.navbar button:hover {
+    background-color: rgb(246, 230, 255);
+}
