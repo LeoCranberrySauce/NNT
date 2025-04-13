@@ -9,6 +9,10 @@
     font-weight: 500;
     font-family: DynaPuff;
     text-shadow: 0px 0px 3px #000;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5vw;
 }
 
 .explore-menu hr {
@@ -19,9 +23,11 @@
 }
 
 .explore-menu-text {
-    color:rgb(36, 1, 18);
-    max-width: 60%;
-    columns: rgb(36, 1, 18);
+    color:rgb(97, 0, 47);
+    columns: rgb(138, 0, 67);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .explore-menu-list {
@@ -45,7 +51,7 @@
 .explore-menu-list-item p {
     margin-top: 10px;
     color: rgb(36, 1, 18);
-    font-size: max(1.4vw, 12px);
+    font-size: 15px;
     cursor: pointer;
 }
 

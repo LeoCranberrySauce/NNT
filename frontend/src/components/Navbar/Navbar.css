@@ -1,5 +1,5 @@
 .logo {
-    width: 100px;
+    width: 140px;
     height: auto;
 }
 
@@ -8,6 +8,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.navbar li {
+    cursor: pointer;
+}
+
+.navbar button {
+    background: transparent;
+    font-size: 18px;
+    color: gray;
+    border: 1px solid rgb(36, 1, 18);
+    padding: 10px 30px;
+    border-radius: 45px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.navbar button:hover {
+    background-color: rgb(246, 230, 255);
 }
 
 .navbar .active {
@@ -49,23 +68,4 @@
     border-radius: 5px;
     top: -8px;
     right: -8px;
-}
-
-.navbar li {
-    cursor: pointer;
-}
-
-.navbar button {
-    background: transparent;
-    font-size: 18px;
-    color: gray;
-    border: 1px solid rgb(36, 1, 18);
-    padding: 10px 30px;
-    border-radius: 45px;
-    cursor: pointer;
-    transition: 0.4s;
-}
-
-.navbar button:hover {
-    background-color: rgb(246, 230, 255);
 }
