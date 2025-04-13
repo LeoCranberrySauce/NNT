@@ -58,3 +58,16 @@
 .footer-content-center, .footer-content-right {
     font-size: 15px;
 }
+
+/* Make a website responsive to view it on your phone. */
+
+@media (max-width:750px) {
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    .footer-copyright {
+        text-align: center;
+    }
+}
