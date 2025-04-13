@@ -6,7 +6,7 @@ const Header = () => {
     <div className='header'>
       <div className="header-contents">
         <h1>Welcome to NNT Purple Food House</h1>
-        <p>Satisfy your cravings!</p>
+        <p>Your favorite meryenda in Baguio!</p>
         <button>View Menu</button>
       </div>
     </div>
