@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700');
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic');
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wdth,wght@75,600&display=swap');
+
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: Merriweather Sans;
+  scroll-behavior: smooth;
 }
 
 body {
