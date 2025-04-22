@@ -23,11 +23,14 @@
     border-right: none;
     padding: 8px 10px;
     border-radius: 3px 0px 0px 3px;
+    text-decoration: none;
+    color: inherit;
 }
 
-.sidebar-option .active {
-    background-color: #faedff;
-    border-color: rgb(148, 46, 168);
+.sidebar-option.active {
+    background-color: #b660d8;
+    border-color: rgb(93, 0, 112);
+    /*color: rgb(236, 233, 236);*/
 }
 
 @media (max-width: 800px) {
