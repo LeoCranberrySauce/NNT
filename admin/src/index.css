@@ -37,6 +37,10 @@ hr {
   gap: 15px;
 }
 
+.cursor {
+  cursor: pointer;
+}
+
 
 
 
