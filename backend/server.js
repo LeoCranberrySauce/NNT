@@ -27,7 +27,7 @@ app.use("/api/cart",cartRouter)
 
 // api routes
 app.get("/", (req, res) => {
-     res.send("API workingworek")
+     res.send("API working")
 });
 
 app.listen(port, () => {
