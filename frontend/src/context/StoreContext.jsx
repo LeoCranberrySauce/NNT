@@ -49,8 +49,7 @@ const StoreContextProvider = (props) => {
         token,
         setToken
     }
-
-
+  
     return (
         <StoreContext.Provider value={ContextValue}>
             {props.children}
