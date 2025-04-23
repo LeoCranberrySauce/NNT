@@ -18,11 +18,11 @@ An online food ordering system that allows customers to scan a QR code, view the
 
 ## 🚀 Features (Planned)
 
-- [x] QR Code menu access (optional)
-- [/] Menu browsing by category
-- [/] Cart & order placement
+- [ ] QR Code menu access (optional)
+- [x] Menu browsing by category
+- [x] Cart & order placement
 - [ ] Real-time order tracking for kitchen staff
-- [/] Admin dashboard for order management
+- [x] Admin dashboard for order management
 - [ ] Online payments such as PayMaya or GCash
 
 ## 🛠️ Project Setup (Local)
