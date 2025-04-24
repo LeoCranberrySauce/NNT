@@ -41,6 +41,7 @@ const List = ({url}) => {
           <b>Image</b>
           <b>Name</b>
           <b>Category</b>
+          <b>Size</b>
           <b>Price</b>
           <b>Description</b>
           <b>Action</b>
@@ -51,9 +52,11 @@ const List = ({url}) => {
               <img src={`${url}/images/`+item.image} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
+              <p>{item.size}</p>
               <p>PHP {item.price}</p>
               <p>{item.description}</p>
               <p onClick={() => removeFood(item._id)} className='cursor'>X</p>
+              
             </div>
           )
         })}

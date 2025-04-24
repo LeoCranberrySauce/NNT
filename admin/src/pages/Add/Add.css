@@ -12,6 +12,7 @@
 
 .add-img-upload img {
     width: 120px; 
+    cursor: pointer;
 }
 
 .add-product-name, .add-product-description {
@@ -20,6 +21,11 @@
 
 .add-product-name input, .add-product-description textarea {
     padding: 10px;
+}
+
+.add-category-price {
+    display: flex;
+    gap: 30px;
 }
 
 .add-category-price {
