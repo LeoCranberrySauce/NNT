@@ -5,10 +5,11 @@
 }
 
 .explore-menu h1 {
-    color:rgb(138, 0, 67);
+    color:rgb(122, 0, 138);
     font-weight: 500;
     font-family: DynaPuff;
     text-shadow: 0px 0px 3px #000;
+    text-align: center;
 }
 
 .explore-menu hr {
@@ -20,7 +21,8 @@
 
 .explore-menu-text {
     color:rgb(36, 1, 18);
-    max-width: 60%;
+    text-align: center;
+    font-size: 18px;
     columns: rgb(36, 1, 18);
 }
 
@@ -59,3 +61,12 @@
     display: none;
 }
 */
+
+/* Make a website responsive to view it on your phone. */
+
+@media (max-width:1050px) {
+    .explore-menu-text {
+        max-width: 100%;
+        font-size: 14px;
+    }
+}
