@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast } from "react-toastify";
 import { assets } from '../../assets/assets';
 
+
 const Orders = ({ url }) => {
 
   const [orders, setOrders] = useState([]);
@@ -16,6 +17,16 @@ const Orders = ({ url }) => {
     }
     else {
       toast.error("Error fetching orders");
+    }
+  }
+
+  const statusHandler = async (event,orderId) => {
+    const response = await axios.post(url + "/api/order/status",{
+      orderId,
+      status:event.target.value
+    })
+    if (response.data.success) {
+      await fetchAllOrders();
     }
   }
 
@@ -48,10 +59,13 @@ const Orders = ({ url }) => {
             </div>
             <p>Items : {order.items.length}</p>
             <p>Amount : PHP {order.amount}.00</p>
-            <select>
-              <option value="Food Processing">Food Processing</option>
-              <option value="Out for Delivery">Out for Delivery</option>
+            <select onChange={(event) => statusHandler(event,order._id)} value={order.status}>
+              <option value="Pending">Pending</option>
+              <option value="Processing">Processing</option>
+              <option value="Ready for Pickup">Ready for Pickup</option>
+              <option value="Delivery in Progress">Delivery in Progress</option>
               <option value="Delivered">Delivered</option>
+              <option value="Cancelled">Cancelled</option>
             </select>
           </div>
         ))}
