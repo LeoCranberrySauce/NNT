@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+.app {
+  padding-top: 80px; /* Add padding to account for fixed navbar */
+  min-height: calc(100vh - 80px); /* Ensure minimum height accounting for navbar */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

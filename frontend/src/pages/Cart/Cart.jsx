@@ -18,6 +18,10 @@ const Cart = () => {
     }
   };
 
+  const formatCurrency3 = (value) => {
+    return `PHP ${parseFloat(value).toFixed(2)}`;
+  };
+
   return (
     <div className='cart'>
       <h1>My Cart</h1>
@@ -39,9 +43,9 @@ const Cart = () => {
                 <div className="cart-items-title cart-items-item">
                   <img src={url+"/images/"+item.image} alt="" />
                   <p>{item.name}</p>
-                  <p>PHP {item.price}</p>
+                  <p>{formatCurrency3(item.price)}</p>
                   <p>{cartItems[item._id]}</p>
-                  <p>PHP {item.price * cartItems[item._id]}</p>
+                  <p>{formatCurrency3(item.price * cartItems[item._id])}</p>
                   <p onClick={() => removeFromCart(item._id)} className='cross'>x</p>
                 </div>
                 <hr />
@@ -56,17 +60,17 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>PHP {getTotalCartAmount(0)}</p>
+              <p>{formatCurrency3(getTotalCartAmount())}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>PHP {getTotalCartAmount()===0?0:2}</p>
+              <p>{formatCurrency3(getTotalCartAmount()===0?0:2)}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>PHP {getTotalCartAmount()===0?0:getTotalCartAmount() + 2}</b>
+              <b>{formatCurrency3(getTotalCartAmount()===0?0:getTotalCartAmount() + 2)}</b>
             </div>
           </div>
           <button onClick={handleCheckout}>PROCEED TO CHECKOUT</button>

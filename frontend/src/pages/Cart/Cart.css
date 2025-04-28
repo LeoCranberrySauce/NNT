@@ -1,8 +1,9 @@
 .cart {
-    margin-top: 100px;
+    margin-top: 200px;
 }
 
 .cart h1 {
+    margin-bottom: 50px;
     color:rgb(122, 0, 138);
     font-weight: 500;
     font-family: DynaPuff;
@@ -21,7 +22,7 @@
     align-items: center;
     color: grey;
     font-size: max(1vw,12px);
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 .cart-items-item {

@@ -1,0 +1,124 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Dashboard.css';
+
+const Dashboard = ({ url }) => {
+  const [stats, setStats] = useState({
+    totalManagers: 0,
+    totalCustomers: 0,
+    totalSales: 0,
+    totalRevenue: 0
+  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(url + "/api/admin/stats");
+        if (response.data.success) {
+          setStats(response.data.data);
+        } else {
+          setError('Failed to fetch dashboard statistics');
+        }
+      } catch (error) {
+        console.error('Error fetching stats:', error);
+        setError('Error fetching dashboard statistics');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStats();
+  }, [url]);
+
+  const formatCurrency2 = (value) => {
+    return `PHP ${parseFloat(value).toFixed(2)}`;
+  };
+
+  const statCards = [
+    {
+      title: 'Total Managers',
+      value: stats.totalManagers,
+      icon: '👨‍💼',
+      color: 'blue'
+    },
+    {
+      title: 'Total Customers',
+      value: stats.totalCustomers,
+      icon: '👥',
+      color: 'green'
+    },
+    {
+      title: 'Total Sales',
+      value: stats.totalSales,
+      icon: '💰',
+      color: 'yellow'
+    },
+    {
+      title: 'Total Revenue',
+      value: formatCurrency2(stats.totalRevenue || 0),
+      icon: '💵',
+      color: 'purple'
+    }
+  ];
+
+  if (loading) {
+    return (
+      <div className="dashboard-container">
+        <div className="dashboard-header">
+          <h1 className="dashboard-title">Dashboard Overview</h1>
+        </div>
+        <div className="dashboard-grid">
+          {[1, 2, 3, 4].map((index) => (
+            <div key={index} className="loading-skeleton">
+              <div className="h-4 bg-gray-300 rounded w-3/4 mb-4"></div>
+              <div className="h-8 bg-gray-300 rounded w-1/2"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="dashboard-container">
+        <div className="dashboard-header">
+          <h1 className="dashboard-title">Dashboard Overview</h1>
+        </div>
+        <div className="error-message">
+          {error}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h1 className="dashboard-title">Dashboard Overview</h1>
+      </div>
+      
+      <div className="dashboard-grid">
+        {statCards.map((card, index) => (
+          <div
+            key={index}
+            className={`stat-card stat-card-${card.color}`}
+          >
+            <div className="stat-card-content">
+              <div className="stat-card-text">
+                <p className="stat-card-title">{card.title}</p>
+                <p className="stat-card-value">{card.value}</p>
+              </div>
+              <span className="stat-card-icon">{card.icon}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;

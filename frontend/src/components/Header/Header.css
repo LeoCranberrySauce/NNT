@@ -7,7 +7,7 @@
     overflow: auto;
 }
 
-.header::after {
+.header::before {
     content: '';
     position: absolute;
     top: 0;
