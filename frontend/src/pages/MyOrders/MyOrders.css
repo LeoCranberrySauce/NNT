@@ -2,6 +2,14 @@
     margin: 50px 0px;
 }
 
+.my-orders h1 {
+    color:rgb(122, 0, 138);
+    font-weight: 500;
+    font-family: DynaPuff;
+    text-shadow: 0px 0px 3px #000;
+    text-align: center;
+}
+
 .my-orders .my-orders-container {
     display: flex;
     flex-direction: column;

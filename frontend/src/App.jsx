@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
@@ -11,13 +11,25 @@ import MyOrders from './pages/MyOrders/MyOrders'
 
 const App = () => {
 
-  const [showLogin,setShowLogin] = useState(false)
+  const [showLogin, setShowLogin] = useState(false)
+
+  useEffect(() => {
+    const handleShowLoginPopup = () => {
+      setShowLogin(true);
+    };
+
+    window.addEventListener('showLoginPopup', handleShowLoginPopup);
+
+    return () => {
+      window.removeEventListener('showLoginPopup', handleShowLoginPopup);
+    };
+  }, []);
 
   return (
     <>
-    {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
+      {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
+      <Navbar setShowLogin={setShowLogin} />
       <div className='app'>
-        <Navbar setShowLogin={setShowLogin}/>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
@@ -28,8 +40,8 @@ const App = () => {
       </div>
       <Footer />
     </>
-    
+
   )
 }
 
-export default App
+export default App;

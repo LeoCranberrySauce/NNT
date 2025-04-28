@@ -2,6 +2,14 @@
     margin-top: 100px;
 }
 
+.cart h1 {
+    color:rgb(122, 0, 138);
+    font-weight: 500;
+    font-family: DynaPuff;
+    text-shadow: 0px 0px 3px #000;
+    text-align: center;
+}
+
 .cart hr {
     height: 1px;
     background-color: #e2e2e2;
@@ -51,7 +59,7 @@
 .cart-total button {
     border: none;
     color: #fdeaff;
-    background-color: rgb(160, 92, 187);
+    background-color: #a74fca;
     width: max(15vw,200px);
     padding: 20px 0px;
     border-radius: 4px;
@@ -85,7 +93,7 @@
     width: max(10vw,150px);
     padding: 12px 5px;
     color: #fdeaff;
-    background-color: rgb(25, 10, 51);
+    background-color: #a74fca;
     border: none;
     border-radius: 4px;
 }

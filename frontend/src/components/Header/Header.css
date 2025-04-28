@@ -1,10 +1,21 @@
 .header {
-    height: 34vw;
+    height: 40vw;   
     margin: 30px auto;
-    background: url('/header_img.jpg') no-repeat;
+    background: url('/header_img.jpg') transparent;
     background-size: cover;
     position: relative;
-    overflow: hidden;
+    overflow: auto;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1;
 }
 
 .header-contents {
@@ -20,10 +31,11 @@
     transform: translate(-50%, -50%);
     animation: fadeIn 1s ease-out;
     text-align: center;
+    z-index: 2;
 }
 
 .header-contents h1 {
-    text-shadow: 0px 0px 10px #000;
+    text-shadow: 5px 5px 6px #000;
     font-weight: 500px;
     color: #a921df;
     font-size: 75px !important;
@@ -32,8 +44,9 @@
 }
 
 .header-contents p {
-    color: #a954ca;
-    font-size: 25px !important;
+    color: #d1b0df;
+    text-shadow: 2px 2px 3px #000;
+    font-size: 33px !important;
     font-family: Merriweather Sans;
     animation: slideUp 1s ease-out 0.4s both;
 }
