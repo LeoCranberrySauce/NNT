@@ -7,7 +7,7 @@ import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
 import dashboardRouter from "./routes/dashboardRoute.js"
-
+import categoryRouter from "./routes/categoryRoute.js"
 
 
 // app config
@@ -28,7 +28,7 @@ app.use("/api/user",userRouter)
 app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
 app.use("/api/admin", dashboardRouter)
-
+app.use("/api/category", categoryRouter)
 // api routes
 app.get("/", (req, res) => {
      res.send("API working")
