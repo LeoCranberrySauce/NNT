@@ -5,6 +5,7 @@
     background-size: cover;
     position: relative;
     overflow: auto;
+    margin-top: 8rem;
 }
 
 .header::before {
