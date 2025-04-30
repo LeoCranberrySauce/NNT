@@ -6,16 +6,17 @@
 
 .categories-add-type {
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .categories-add-type select {
-    max-width: 120px;
+    max-width: 200px;
     padding: 10px;
 }
 
 .categories-add-type input {
-    max-width: 300px;
+    max-width: 400px;
     padding: 10px;
 }
 
@@ -28,7 +29,7 @@
 }
 
 .add-cat-btn {  
-    margin-top: 40px;
+    margin-top: 20px;
     width: 150px;
     padding: 10px;
     border-radius: 5px;
@@ -36,6 +37,7 @@
     background-color: rgb(64, 0, 77);
     color: white;
     cursor: pointer;
+    align-self: flex-start;
 }
 
 .categories-table h2, .categories-add h2 {
@@ -45,6 +47,7 @@
     font-weight: 700;
     margin-bottom: 10px;
     align-items: flex-start;
+    margin-top: 20px;
 }
 
 .categories-table {
@@ -65,4 +68,36 @@
 .categories-table-format.title{
     background-color:#b75cc9;
     font-size: 20px;
+}
+
+@media (max-width: 800px) {
+    .categories-add-type {
+        gap: 15px;
+    }
+    
+    .categories-add-name {
+        width: 100%;
+    }
+    
+    .categories-add-name input {
+        width: 100%;
+    }
+    
+    .categories-select-type select {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .add-cat-btn {
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .categories-table-format{
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+    }
+    .categories-table-format.title{
+        display: none;
+    }
 }

@@ -4,6 +4,8 @@ import './Dashboard.css';
 
 const Dashboard = ({ url }) => {
   const [stats, setStats] = useState({
+    totalFoods: 0,
+    totalCategories: 0,
     totalManagers: 0,
     totalCustomers: 0,
     totalSales: 0,
@@ -32,9 +34,10 @@ const Dashboard = ({ url }) => {
 
     fetchStats();
   }, [url]);
+  
 
   const formatCurrency2 = (value) => {
-    return `PHP ${parseFloat(value).toFixed(2)}`;
+    return `PHP ${parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   };
 
   const statCards = [
@@ -61,6 +64,18 @@ const Dashboard = ({ url }) => {
       value: formatCurrency2(stats.totalRevenue || 0),
       icon: '💵',
       color: 'purple'
+    },
+    {
+      title: 'Total Number of Foods',
+      value: stats.totalFoods,
+      icon: '👨‍💼',
+      color: 'red'
+    },
+    {
+      title: 'Total Number of Categories',
+      value: stats.totalCategories,
+      icon: '👨‍💼',
+      color: 'orange'
     }
   ];
 
@@ -71,7 +86,7 @@ const Dashboard = ({ url }) => {
           <h1 className="dashboard-title">Dashboard Overview</h1>
         </div>
         <div className="dashboard-grid">
-          {[1, 2, 3, 4].map((index) => (
+          {[1, 2, 3, 4, 5, 6].map((index) => (
             <div key={index} className="loading-skeleton">
               <div className="h-4 bg-gray-300 rounded w-3/4 mb-4"></div>
               <div className="h-8 bg-gray-300 rounded w-1/2"></div>

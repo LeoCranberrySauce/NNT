@@ -1,8 +1,14 @@
 import userModel from '../models/userModel.js';
 import orderModel from '../models/orderModel.js';
+import foodModel from '../models/foodModel.js';
+import categoryModel from '../models/categoryModel.js';
 
 export const getDashboardStats = async (req, res) => {
     try {
+        // Get total no. of foods (all users)
+        const totalFoods = await foodModel.countDocuments();
+        // Get total no. of categories (all users)
+        const totalCategories = await categoryModel.countDocuments();
         // Get total customers (all users)
         const totalCustomers = await userModel.countDocuments();
 
@@ -18,6 +24,8 @@ export const getDashboardStats = async (req, res) => {
         res.json({
             success: true,
             data: {
+                totalFoods,
+                totalCategories,
                 totalManagers,
                 totalCustomers,
                 totalSales,
