@@ -14,6 +14,16 @@ export const getDashboardStats = async (req, res) => {
 
         // Get total sales and revenue from orders
         const orders = await orderModel.find();
+
+        // Get total sales and revenue from orders
+        const totalSalesDelivered = orders
+            .filter(order => order.status === "Delivered")
+            .length;
+        const totalRevenueDelivered = orders
+            .filter(order => order.status === "Delivered")
+            .reduce((sum, order) => sum + order.amount, 0);
+        
+        // Get expected total sales and revenue from orders
         const totalSales = orders.length;
         const totalRevenue = orders.reduce((sum, order) => sum + order.amount, 0);
 
@@ -29,7 +39,9 @@ export const getDashboardStats = async (req, res) => {
                 totalManagers,
                 totalCustomers,
                 totalSales,
-                totalRevenue
+                totalSalesDelivered,
+                totalRevenue,
+                totalRevenueDelivered
             }
         });
     } catch (error) {
