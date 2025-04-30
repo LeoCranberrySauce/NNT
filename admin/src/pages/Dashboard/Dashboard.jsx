@@ -9,7 +9,9 @@ const Dashboard = ({ url }) => {
     totalManagers: 0,
     totalCustomers: 0,
     totalSales: 0,
-    totalRevenue: 0
+    totalSalesDelivered: 0,
+    totalRevenue: 0,
+    totalRevenueDelivered: 0
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -99,7 +101,7 @@ const Dashboard = ({ url }) => {
 
   if (loading) {
     return (
-      <div className="dashboard-container">
+      <div className="dashboard-container add flex-col">
         <div className="dashboard-header">
           <h1 className="dashboard-title">Dashboard Overview</h1>
         </div>
@@ -133,7 +135,7 @@ const Dashboard = ({ url }) => {
 
   if (error) {
     return (
-      <div className="dashboard-container">
+      <div className="dashboard-container add flex-col">
         <div className="dashboard-header">
           <h1 className="dashboard-title">Dashboard Overview</h1>
         </div>
@@ -145,7 +147,7 @@ const Dashboard = ({ url }) => {
   }
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container add flex-col">
       <div className="dashboard-header">
         <h1 className="dashboard-title">Dashboard Overview</h1>
       </div>
