@@ -1,3 +1,8 @@
+.list-table { 
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
 .list-table-format{ 
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 3fr 0.5fr;
@@ -17,6 +22,16 @@
     font-size: 20px;
 }
 
+.add-list h2, .list-table h2 {
+    margin: auto;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
 @media (max-width: 600px) {
     .list-table-format{
         grid-template-columns: 1fr 3fr 1fr;
@@ -28,3 +43,52 @@
     
 }
 
+.add {
+    width: 70%;
+    margin-left: max(5vw, 25px);
+    margin-top: 50px;
+    color:#40004d;
+    font-size: 18px;
+}
+
+.add form {
+    gap: 20px;
+}
+
+.add-img-upload img {
+    width: 120px; 
+    cursor: pointer;
+}
+
+.add-product-name, .add-product-description {
+    width: max(40%, 280px);
+}
+
+.add-product-name input, .add-product-description textarea {
+    padding: 10px;
+}
+
+.add-category-price {
+    display: flex;
+    gap: 30px;
+}
+
+.add-category-price {
+    display: flex;
+    gap: 30px;
+}
+
+.add-category-price select, .add-category-price input {
+    max-width: 120px;
+    padding: 10px;
+}
+
+.add-btn {  
+    width: 120px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(64, 0, 77);
+    color: white;
+    cursor: pointer;
+}

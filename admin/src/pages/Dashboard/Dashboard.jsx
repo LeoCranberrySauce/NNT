@@ -38,7 +38,7 @@ const Dashboard = ({ url }) => {
   }, [url]);
 
 
-  const formatCurrency2 = (value) => {
+  const formatCurrency1 = (value) => {
     return `PHP ${parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   };
 
@@ -66,7 +66,7 @@ const Dashboard = ({ url }) => {
     },
     {
       title: 'Revenue',
-      value: formatCurrency2(stats.totalRevenue || 0),
+      value: formatCurrency1(stats.totalRevenue || 0),
       icon: '💵',
       color: 'purple'
     },
@@ -78,7 +78,7 @@ const Dashboard = ({ url }) => {
     },
     {
       title: 'Revenue Received',
-      value: formatCurrency2(stats.totalRevenueDelivered || 0),
+      value: formatCurrency1(stats.totalRevenueDelivered || 0),
       icon: '💵',
       color: 'purple'
     }

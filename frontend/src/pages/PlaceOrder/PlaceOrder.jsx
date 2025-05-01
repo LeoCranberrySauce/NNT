@@ -20,6 +20,10 @@ const PlaceOrder = () => {
     phone:""
   })
 
+  const formatCurrency1 = (value) => {
+    return `PHP ${parseFloat(value).toFixed(2)}`;
+  };
+
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -90,17 +94,17 @@ const PlaceOrder = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>PHP {getTotalCartAmount(0)}</p>
+              <p>{formatCurrency1(getTotalCartAmount(0))}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>PHP {getTotalCartAmount()===0?0:2}</p>
+              <p>{formatCurrency1(getTotalCartAmount()===0?0:2)}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>PHP {getTotalCartAmount()===0?0:getTotalCartAmount() + 2}</b>
+              <b>{formatCurrency1(getTotalCartAmount()===0?0:getTotalCartAmount() + 2)}</b>
             </div>
           </div>
           <button type='submit'>PROCEED TO PAYMENT</button>
