@@ -133,7 +133,7 @@ const Categories = () => {
   if (error) {
     return (
       <div className="categories add flex-col">
-        <h1>Category List</h1>
+        <h1>Manage Categories</h1>
         <div className="error-message">
           {error}
         </div>

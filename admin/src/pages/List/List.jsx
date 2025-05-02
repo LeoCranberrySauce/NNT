@@ -9,6 +9,8 @@ const List = ({ url }) => {
 
   //ADD MORE FOODS
   const [image, setImage] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [data, setData] = useState({
     name: "",
     description: "",
@@ -111,12 +113,23 @@ const List = ({ url }) => {
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
-    const response = await axios.get(`${url}/api/food/list`);
-    if (response.data.success) {
-      setList(response.data.data);
-    }
-    else {
-      toast.error("List error")
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await axios.get(`${url}/api/food/list`);
+      if (response.data.success) {
+        setList(response.data.data || []);
+      } else {
+        setError(response.data.message || "Failed to fetch categories");
+        toast.error(response.data.message || "Failed to fetch categories");
+      }
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || "Error fetching categories";
+      setError(errorMessage);
+      toast.error(errorMessage);
+      console.error("Error fetching categories:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -135,6 +148,17 @@ const List = ({ url }) => {
     fetchList();
     fetchCategoryList();
   }, [])
+
+  if (error) {
+    return (
+      <div className="categories add flex-col">
+        <h1>Manage Food List</h1>
+        <div className="error-message">
+          {error}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='list add flex-col'>
@@ -198,8 +222,12 @@ const List = ({ url }) => {
           <b>Description</b>
           <b>Action</b>
         </div>
-        {list.map((item, index) => {
-          return (
+        {loading ? (
+          <div className="loading">Loading...</div>
+        ) : !list || list.length === 0 ? (
+          <div className="no-data">No Food List found</div>
+        ) : (
+          list.map((item, index) => (
             <div className="list-table-format" key={index}>
               <img src={`${url}/images/` + item.image} alt="" />
               <p>{item.name}</p>
@@ -210,8 +238,8 @@ const List = ({ url }) => {
               <p onClick={() => removeFood(item._id)} className='cursor'>X</p>
 
             </div>
-          )
-        })}
+          ))
+        )}
       </div>
 
     </div>

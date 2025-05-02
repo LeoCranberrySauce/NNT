@@ -32,7 +32,7 @@ const UsersList = ({ url }) => {
                 <div className="user-list-table-format title">
                     <b>Name</b>
                     <b>Adress</b>
-                    <b>Phone Number</b>
+                    <b>Phone No.</b>
                     <b>Email</b>
                 </div>
                 {usersList.map((user, index) => {
