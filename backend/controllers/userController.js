@@ -34,7 +34,7 @@ const createToken = (id) => {
 
 // Reg user
 const registerUser = async (req,res) => {
-    const {name,password,email} = req.body;
+    const {name,address,phone,email,password} = req.body;
     try {
         // check if user already exists
         const exists = await userModel.findOne({email});
@@ -56,6 +56,8 @@ const registerUser = async (req,res) => {
 
         const newUser = new userModel({
             name:name,
+            address:address,
+            number:number,
             email:email,
             password:hashedPassword
         })
@@ -71,4 +73,15 @@ const registerUser = async (req,res) => {
     
 }
 
-export {loginUser, registerUser}
+// all users list
+const usersList = async (req,res) => {
+    try {
+        const foods = await userModel.find({});
+        res.json({success:true,data:foods})
+    } catch {
+        console.log(error);
+        res.json({success:false,message:"Error"})
+    }
+}
+
+export {loginUser, registerUser, usersList}
