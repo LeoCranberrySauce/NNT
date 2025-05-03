@@ -19,7 +19,7 @@ const Cart = () => {
   };
 
   const formatCurrency3 = (value) => {
-    return `PHP ${parseFloat(value).toFixed(2)}`;
+    return `PHP ${parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   };
 
   return (

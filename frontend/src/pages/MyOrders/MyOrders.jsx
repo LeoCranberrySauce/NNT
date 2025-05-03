@@ -14,6 +14,10 @@ const MyOrders = () => {
         setData(response.data.data);
     }
 
+    const formatCurrency2 = (value) => {
+      return `PHP ${parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    };
+
     useEffect(() => {
         if (token) {
             fetchOrders();
@@ -33,7 +37,7 @@ const MyOrders = () => {
                                     <p key={index}><span>&#x25cf;</span> {item.name} x {item.quantity}</p>
                                 ))}
                             </div>
-                            <p>PHP {order.amount}.00</p>
+                            <p>{formatCurrency2(item.amount)}.00</p>
                             <p>Items: {order.items.length}</p>
                             <p>Order Date: {order.createdAt}</p>
                             <p><span>&#x25cf;</span> <b>{order.status}</b></p>

@@ -12,6 +12,15 @@ const StoreContextProvider = (props) => {
     const [category_list, setCategoryList] = useState([])
 
     const addToCart = async (itemId) => {
+        const item = food_list.find((product) => product._id === itemId);
+        if (!item) return;
+
+        // Check if we can add more items based on stock
+        const currentQuantity = cartItems[itemId] || 0;
+        if (currentQuantity >= item.stock) {
+            return; // Can't add more items than available stock
+        }
+
         if (!cartItems[itemId]) {
             setCartItems((prev) => ({ ...prev, [itemId]: 1 }))
         }
@@ -24,6 +33,8 @@ const StoreContextProvider = (props) => {
     }
 
     const removeFromCart = async (itemId) => {
+        if (!cartItems[itemId] || cartItems[itemId] <= 0) return;
+        
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
         if (token) {
             await axios.post(url+"/api/cart/remove",{itemId},{headers:{token}})

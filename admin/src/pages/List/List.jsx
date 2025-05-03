@@ -5,25 +5,27 @@ import axios from "axios"
 import { toast } from 'react-toastify'
 
 
-const List = ({ url }) => {
+const List = () => {
 
   //ADD MORE FOODS
   const [image, setImage] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const baseURL = 'http://localhost:4000';
   const [data, setData] = useState({
     name: "",
-    description: "",
-    price: "",
     category: "",
-    size: "16oz"
+    description: "",
+    size: "16oz",
+    price: "",
+    stock: ""
   });
 
   const [categoryList, setCategoryList] = useState([]);
 
   const fetchCategoryList = async () => {
     try {
-      const response = await axios.get(`${url}/api/category/cat-list`);
+      const response = await axios.get(`${baseURL}/api/category/cat-list`);
       if (response.data.success) {
         setCategoryList(response.data.data);
         // Set default category if available
@@ -85,18 +87,20 @@ const List = ({ url }) => {
     formData.append("description", data.description);
     formData.append("price", Number(data.price));
     formData.append("category", data.category);
+    formData.append("stock", Number(data.stock));
     formData.append("size", selectedCategory?.type === "Drink" ? data.size : "");
     formData.append("image", image);
 
     try {
-      const response = await axios.post(`${url}/api/food/add`, formData);
+      const response = await axios.post(`${baseURL}/api/food/add`, formData);
       if (response.data.success) {
         setData({
           name: "",
           description: "",
           price: "",
           category: categoryList[0]?.name || "",
-          size: "16oz"
+          size: "16oz",
+          stock: ""
         });
         setImage(false);
         toast.success("Product added successfully");
@@ -116,7 +120,7 @@ const List = ({ url }) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.get(`${url}/api/food/list`);
+      const response = await axios.get(`${baseURL}/api/food/list`);
       if (response.data.success) {
         setList(response.data.data || []);
       } else {
@@ -134,7 +138,7 @@ const List = ({ url }) => {
   }
 
   const removeFood = async (foodId) => {
-    const response = await axios.post(`${url}/api/food/remove`, { id: foodId });
+    const response = await axios.post(`${baseURL}/api/food/remove`, { id: foodId });
     await fetchList();
     if (response.data.success) {
       toast.success("Food removed successfully");
@@ -164,6 +168,7 @@ const List = ({ url }) => {
     <div className='list add flex-col'>
 
       <h1>Manage Food List</h1>
+
       {/*ADD MORE FOODS*/}
       <form className='flex-col' onSubmit={onSubmitHandler}>
         <div className="add-list">
@@ -191,11 +196,6 @@ const List = ({ url }) => {
                   <option key={category._id} value={category.name}>{category.name}</option>
                 ))}
               </select>
-            </div>
-            <div className="add-price flex-col">
-              <p>Product Price</p>
-              <input onChange={onChangeHandler} value={data.price} type='number' name='price' placeholder='Enter Price' required />
-            </div>
             {categoryList.find(cat => cat.name === data.category)?.type === "Drink" && (
               <div className="add-size flex-col">
                 <p>Size</p>
@@ -205,6 +205,13 @@ const List = ({ url }) => {
                 </select>
               </div>
             )}
+            </div>
+            <div className="add-price flex-col">
+              <p>Product Price</p>
+              <input onChange={onChangeHandler} value={data.price} type='number' name='price' placeholder='Enter Price' required />
+              <p>In Stock</p>
+              <input onChange={onChangeHandler} value={data.stock} type='number' name='stock' placeholder='Enter Stock' required />
+            </div>
           </div>
         </div>
         <button type='submit' className='add-btn'>Add Product</button>
@@ -220,6 +227,7 @@ const List = ({ url }) => {
           <b>Size</b>
           <b>Price</b>
           <b>Description</b>
+          <b>No. of Stock</b>
           <b>Action</b>
         </div>
         {loading ? (
@@ -229,12 +237,13 @@ const List = ({ url }) => {
         ) : (
           list.map((item, index) => (
             <div className="list-table-format" key={index}>
-              <img src={`${url}/images/` + item.image} alt="" />
+              <img src={`${baseURL}/images/` + item.image} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>{item.size}</p>
               <p>{formatCurrency2(item.price)}</p>
               <p>{item.description}</p>
+              <p>{item.stock}</p>
               <p onClick={() => removeFood(item._id)} className='cursor'>X</p>
 
             </div>
