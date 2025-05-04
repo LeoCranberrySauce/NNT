@@ -4,12 +4,12 @@ import "./Categories.css"
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-const Categories = () => {
+const Categories = ({url, setEditCategory, setCategoryToEdit}) => {
   const [image, setImage] = useState(false);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const baseURL = 'http://localhost:4000';
+  const baseURL = url;
 
   const [data, setData] = useState({
     name: "",
@@ -32,24 +32,24 @@ const Categories = () => {
         // Create a canvas to resize the image
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-        
+
         // Create an image element
         const img = new Image();
         img.src = URL.createObjectURL(image);
-        
+
         // Wait for image to load
         await new Promise((resolve) => {
           img.onload = resolve;
         });
-        
+
         // Set maximum dimensions
         const MAX_WIDTH = 800;
         const MAX_HEIGHT = 800;
-        
+
         // Calculate new dimensions
         let width = img.width;
         let height = img.height;
-        
+
         if (width > height) {
           if (width > MAX_WIDTH) {
             height = Math.round((height * MAX_WIDTH) / width);
@@ -61,14 +61,14 @@ const Categories = () => {
             height = MAX_HEIGHT;
           }
         }
-        
+
         // Set canvas dimensions
         canvas.width = width;
         canvas.height = height;
-        
+
         // Draw and compress image
         ctx.drawImage(img, 0, 0, width, height);
-        
+
         // Convert to base64 with reduced quality
         imageBase64 = canvas.toDataURL('image/jpeg', 0.7);
       }
@@ -124,6 +124,11 @@ const Categories = () => {
     else {
       toast.error("Category removal failed");
     }
+  }
+
+  const handleEdit = (category) => {
+    setCategoryToEdit(category);
+    setEditCategory(true);
   }
 
   useEffect(() => {
@@ -193,7 +198,10 @@ const Categories = () => {
               <img src={category.image} alt={category.name} style={{ width: '50px', height: '50px', objectFit: 'cover' }} />
               <p>{category.name}</p>
               <p>{category.type}</p>
-              <p onClick={() => removeCategories(category._id)} className='cursor'>X</p>
+              <div className="categories-table-action">
+                <button onClick={() => handleEdit(category)} className="categories-table-button" >Edit</button>
+                <button onClick={() => removeCategories(category._id)} className="categories-table-del">Delete</button>
+              </div>
             </div>
           ))
         )}

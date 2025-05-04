@@ -1,0 +1,137 @@
+.edit-category-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.edit-category-popup-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.edit-category-popup-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.edit-category-popup-title h2 {
+    margin: 0;
+    color: #333;
+}
+
+.edit-category-popup-title img {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+.edit-category-popup-inputs label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.edit-category-popup-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.edit-category-popup-inputs input, .edit-category-popup-inputs select {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.edit-category-popup-inputs input:focus, .edit-category-popup-inputs select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.multi-fields {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.multi-fields input {
+    flex: 1;
+}
+
+.edit-category-popup-container button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.edit-category-popup-container button:hover {
+    background-color: #357abd;
+}
+
+.edit-category-popup-condition {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.edit-category-popup-condition input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+.edit-category-popup-container p {
+    text-align: center;
+    margin: 1rem 0;
+    color: #666;
+}
+
+.edit-category-popup-container p span {
+    color: #4a90e2;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.edit-category-popup-container p span:hover {
+    color: #357abd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .edit-category-popup-container {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .multi-fields {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

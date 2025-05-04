@@ -40,6 +40,35 @@
     align-self: flex-start;
 }
 
+.categories-table-action {  
+    gap: 5px;
+    padding: 10px;
+}
+
+.categories-table-button {  
+    margin-top: 5px;
+    width: 75px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(64, 0, 77);
+    color: white;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.categories-table-del {  
+    margin-top: 5px;
+    width: 75px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(206, 2, 2);
+    color: white;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
 .categories-table h2, .categories-add h2 {
     margin: auto;
     padding: 10px;
