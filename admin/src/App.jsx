@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import Categories from './pages/Categories/Categories'
 import UsersList from './pages/UsersList/UsersList'
 import EditCategory from './pages/EditCategory/EditCategory'
+import EditFoodList from './pages/EditFoodList/EditFoodList'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -17,6 +18,8 @@ const App = () => {
   const url = "http://localhost:4000"
   const [editCategory, setEditCategory] = useState(false)
   const [categoryToEdit, setCategoryToEdit] = useState(null)
+  const [editFoodList, setEditFoodList] = useState(false)
+  const [foodsToEdit, setFoodsToEdit] = useState(null)
 
   return (
     <div>
@@ -29,17 +32,31 @@ const App = () => {
           <Route path='/' element={<Navigate to="/dashboard" replace />} />
           <Route path='/dashboard' element={<Dashboard url={url} />} />
           {/*<Route path='/add' element={<Add url={url} />} />*/}
-          <Route path='/list' element={<List url={url} />} />
+          <Route path='/list' element={
+            <>
+              <List
+                url={url}
+                setEditFoodList={setEditFoodList}
+                setFoodsToEdit={setFoodsToEdit}
+              />
+              {editFoodList && (
+                <EditFoodList
+                  setEditFoodList={setEditFoodList}
+                  foodsToEdit={foodsToEdit}
+                />
+              )}
+            </>
+          } />
           <Route path='/category' element={
             <>
-              <Categories 
-                url={url} 
-                setEditCategory={setEditCategory} 
+              <Categories
+                url={url}
+                setEditCategory={setEditCategory}
                 setCategoryToEdit={setCategoryToEdit}
               />
               {editCategory && (
-                <EditCategory 
-                  setEditCategory={setEditCategory} 
+                <EditCategory
+                  setEditCategory={setEditCategory}
                   categoryToEdit={categoryToEdit}
                 />
               )}

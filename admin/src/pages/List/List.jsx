@@ -5,13 +5,13 @@ import axios from "axios"
 import { toast } from 'react-toastify'
 
 
-const List = () => {
+const List = ({url, setEditFoodList, setFoodsToEdit}) => {
 
   //ADD MORE FOODS
   const [image, setImage] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const baseURL = 'http://localhost:4000';
+  const baseURL = url;
   const [data, setData] = useState({
     name: "",
     category: "",
@@ -148,6 +148,11 @@ const List = () => {
     }
   }
 
+  const handleEdit = (category) => {
+    setFoodsToEdit(category);
+    setEditFoodList(true);
+  }
+
   useEffect(() => {
     fetchList();
     fetchCategoryList();
@@ -244,7 +249,10 @@ const List = () => {
               <p>{formatCurrency2(item.price)}</p>
               <p>{item.description}</p>
               <p>{item.stock}</p>
-              <p onClick={() => removeFood(item._id)} className='cursor'>X</p>
+              <div className="categories-table-action">
+                <button onClick={() => handleEdit(item)} className="list-table-button" >Edit</button>
+                <button onClick={() => removeFood(item._id)} className="list-table-del">Delete</button>
+              </div>
 
             </div>
           ))

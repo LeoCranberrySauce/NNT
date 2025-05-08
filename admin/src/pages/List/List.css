@@ -22,6 +22,30 @@
     font-size: 20px;
 }
 
+.list-table-button {  
+    margin-top: 5px;
+    width: 75px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(64, 0, 77);
+    color: white;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.list-table-del {  
+    margin-top: 5px;
+    width: 75px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(206, 2, 2);
+    color: white;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
 .add-list h2, .list-table h2 {
     margin: auto;
     padding: 10px;
